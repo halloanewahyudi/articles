@@ -2,7 +2,7 @@
 import { ref, watch } from "vue";
 
 // Definisikan slug kategori yang ingin digunakan
-const categorySlug = ref("email"); // Ganti dengan slug kategori yang diinginkan
+const categorySlug = ref("secure-mail"); // Ganti dengan slug kategori yang diinginkan
 const categoryId = ref<number | null>(null);
 const posts = ref<any[]>([]);
 const searchQuery = ref("");
