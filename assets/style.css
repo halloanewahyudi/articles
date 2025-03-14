@@ -1,0 +1,10 @@
+body{
+    @apply text-neutral-700;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+p{
+    @apply leading-relaxed mb-5;
+}
+h1,h2{
+    font-family: 'Lora', serif;
+}
