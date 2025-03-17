@@ -5,6 +5,7 @@ import { ref, watch } from "vue";
 const categorySlug = ref("secure-mail"); // Ganti dengan slug kategori yang diinginkan
 const categoryId = ref<number | null>(null);
 const posts = ref<any[]>([]);
+const tagsId = ref(191)
 const searchQuery = ref("");
 const currentPage = ref(1);
 const perPage = 10;
@@ -38,7 +39,7 @@ const fetchPosts = async () => {
   try {
    
     const response = await fetch(
-      `${apiUrl}/posts?categories=${categoryId.value}&search=${searchQuery.value}&per_page=${perPage}&page=${currentPage.value}`
+      `${apiUrl}/posts?tags=${tagsId.value}&search=${searchQuery.value}&per_page=${perPage}&page=${currentPage.value}`
     );
     posts.value = await response.json();
     totalPages.value = Number(response.headers.get("X-WP-TotalPages"));
@@ -107,7 +108,8 @@ const searchPosts = () => {
     </div>
 
     <!-- Pagination -->
-    <div class="flex justify-between pt-5">
+     <div v-if="totalPages > perPage">
+      <div class="flex justify-between pt-5">
       <button
         @click="currentPage--"
         :disabled="currentPage === 1"
@@ -120,5 +122,7 @@ const searchPosts = () => {
         class="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
       > →</button>
     </div>
+     </div>
+   
   </div>
 </template>
